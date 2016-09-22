@@ -1,0 +1,53 @@
+{
+  "name": "ecs-deploy",
+  "version": "0.0.0",
+  "description": "Simple and easy way to deploy tasks and update services in AWS ECS.",
+  "main": "lib/index.js",
+  "author": "Kristoffer K Larsen <kristoffer@larsen.so>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/larseen/ecs-deploy"
+  },
+  "bugs": {
+    "url": "https://github.com/larseen/ecs-deploy/issues"
+  },
+  "ava": {
+    "require": "babel-core/register",
+    "files": [
+      "test/**/*.test.js"
+    ]
+  },
+  "keywords": [
+    "aws",
+    "ecs",
+    "docker",
+    "amazon",
+    "deploy",
+    "cli"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "lint": "eslint --ignore-path .gitignore .",
+    "build": "babel src --out-dir lib",
+    "clean": "rm -fr lib",
+    "test": "npm run lint && nyc --reporter=text ava",
+    "test:watch": "ava --watch"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
+    "eslint-plugin-async-await": "0.0.0",
+    "eslint-plugin-import": "^1.15.0",
+    "nyc": "^8.3.0"
+  },
+  "dependencies": {
+    "yargs": "^5.0.0"
+  }
+}
