@@ -1,0 +1,85 @@
+{
+    "networkMode": "bridge",
+    "family": "vio-elk",
+    "containerDefinitions": [
+        {
+            "image": "775479825196.dkr.ecr.eu-west-1.amazonaws.com/vio-kibana:latest",
+            "essential": false,
+            "name": "kibana",
+            "memoryReservation": 300,
+            "links": [
+                "elasticsearch:elasticsearch"
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 5601,
+                    "protocol": "tcp"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "vio-kibana",
+                    "awslogs-region": "eu-west-1"
+                }
+            }
+        },
+        {
+            "memoryReservation": 300,
+            "essential": true,
+            "name": "elasticsearch",
+            "image": "elasticsearch:latest",
+            "portMappings": [
+                {
+                    "hostPort": 9200,
+                    "containerPort": 9200,
+                    "protocol": "tcp"
+                },
+                {
+                    "hostPort": 9300,
+                    "containerPort": 9300,
+                    "protocol": "tcp"
+                }
+            ],
+            "command": [
+                "elasticsearch",
+                "-Des.network.host=0.0.0.0"
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "vio-elasticsearch",
+                    "awslogs-region": "eu-west-1"
+                }
+            }
+        },
+        {
+            "memoryReservation": 300,
+            "essential": false,
+            "image": "775479825196.dkr.ecr.eu-west-1.amazonaws.com/vio-logstash:latest",
+            "name": "logstash",
+            "portMappings": [
+                {
+                    "hostPort": 5000,
+                    "containerPort": 5000,
+                    "protocol": "tcp"
+                }
+            ],
+            "links": [
+                "elasticsearch:elasticsearch"
+            ],
+            "command": [
+                "logstash",
+                "-f",
+                "/etc/logstash/conf.d/logstash.conf"
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "vio-logstash",
+                    "awslogs-region": "eu-west-1"
+                }
+            }
+        }
+    ]
+}

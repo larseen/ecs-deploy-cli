@@ -1,8 +1,9 @@
 {
   "name": "ecs-deploy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple and easy way to deploy tasks and update services in AWS ECS.",
-  "main": "lib/index.js",
+  "main": "src/index.js",
+  "bin": "./bin/index.js",
   "author": "Kristoffer K Larsen <kristoffer@larsen.so>",
   "repository": {
     "type": "git",
@@ -27,7 +28,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "start": "babel-node src/index.js",
+    "start": "node bin",
     "lint": "eslint --ignore-path .gitignore .",
     "build": "babel src --out-dir lib",
     "clean": "rm -fr lib",
@@ -48,6 +49,9 @@
     "nyc": "^8.3.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.6.5",
+    "bluebird": "^3.4.6",
+    "chalk": "^1.1.3",
     "yargs": "^5.0.0"
   }
 }

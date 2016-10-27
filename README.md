@@ -54,7 +54,7 @@ $ ecs-deploy deploy
 or
 
 ```sh
-$ ecs-deploy deploy --task specialTask.json
+$ ecs-deploy deploy --task production.task.json
 ```
 
 
