@@ -48,20 +48,20 @@ For a more detailed task definition see the DOCS for the [AWS CLI](http://docs.a
 ### Create a new task
 
 ```sh
-$ ecs-deploy
+$ ecs-deploy-cli
 ```
 
 or
 
 ```sh
-$ ecs-deploy production.task.json
+$ ecs-deploy-cli production.task.json
 ```
 
 
 ### Create a new task and update an existing service
 
 ```sh
-$ ecs-deploy --service node-service --cluster ecs-cluster
+$ ecs-deploy-cli --service node-service --cluster ecs-cluster
 ```
 
 
