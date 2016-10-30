@@ -1,13 +1,13 @@
-# deploy-ecs
+# ecs-deploy-cli
 
-`deploy-ecs` is a simple and easy way to deploy tasks and update services in AWS ECS.
+`ecs-deploy-cli` is a simple and easy way to deploy tasks and update services in AWS ECS.
 
-Just write your task definition in `task.json` and upload them straight to AWS using `deploy-ecs`.
+Just write your task definition in `task.json` and upload them straight to AWS using `ecs-deploy-cli`.
 
 ## Install
 
 ```sh
-$ npm install -g deploy-ecs
+$ npm install -g ecs-deploy-cli
 ```
 
 To be able to deploy to AWS you need to have installed the `aws-cli` and configured it to use the the account you wish to upload the function to.
@@ -48,20 +48,20 @@ For a more detailed task definition see the DOCS for the [AWS CLI](http://docs.a
 ### Create a new task
 
 ```sh
-$ ecs-deploy deploy
+$ ecs-deploy
 ```
 
 or
 
 ```sh
-$ ecs-deploy deploy --task production.task.json
+$ ecs-deploy production.task.json
 ```
 
 
 ### Create a new task and update an existing service
 
 ```sh
-$ ecs-deploy deploy --service node-service --cluser ecs-cluster
+$ ecs-deploy --service node-service --cluster ecs-cluster
 ```
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "ecs-deploy",
+  "name": "ecs-deploy-cli",
   "version": "0.0.1",
   "description": "Simple and easy way to deploy tasks and update services in AWS ECS.",
   "main": "src/index.js",
@@ -7,10 +7,10 @@
   "author": "Kristoffer K Larsen <kristoffer@larsen.so>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/larseen/ecs-deploy"
+    "url": "https://github.com/larseen/ecs-deploy-cli"
   },
   "bugs": {
-    "url": "https://github.com/larseen/ecs-deploy/issues"
+    "url": "https://github.com/larseen/ecs-deploy-cli/issues"
   },
   "ava": {
     "require": "babel-core/register",
