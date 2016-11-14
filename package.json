@@ -1,6 +1,6 @@
 {
   "name": "ecs-deploy-cli",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Simple and easy way to deploy tasks and update services in AWS ECS.",
   "main": "src/index.js",
   "bin": "./bin/index.js",

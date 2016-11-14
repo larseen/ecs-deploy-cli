@@ -26,34 +26,37 @@ module.exports = function deploy(argv) {
         File: ${path.resolve(source)}`));
 
     ECS.registerTaskDefinitionAsync(task)
-        .then(response => {
-            taskDefinition = response.taskDefinition;
+        .then((response) => {
+            const taskDefinition = response.taskDefinition;
             console.log(chalk.cyan(`Registrated new task definition:
                 Task: ${taskDefinition.taskDefinitionArn}
                 Family: ${taskDefinition.family}
                 Revision: ${taskDefinition.revision}`));
             return taskDefinition;
         })
-        .then(taskDefinition => {
+        .then((taskDefinition) => {
             if (!argv.service) {
-                console.log(chalk.cyan('No service to update'));
-                return;
+                Promise.resovle('No service to update');
             }
 
             if (!argv.cluster) {
-                console.log(chalk.red('Missing cluster to update'));
-                return;
+                throw new Error('Missing cluster to update');
             }
 
             console.log(chalk.cyan(`Updating:
                 Task: ${taskDefinition.taskDefinitionArn}
                 Service: ${argv.service}
                 Cluster: ${argv.cluster}`));
+            return ECS.registerTaskDefinitionAsync({
+                service: argv.service,
+                cluster: argv.cluster,
+                taskDefinition: taskDefinition.taskDefinitionArn
+            });
         })
         .then(() => {
             console.log(chalk.cyan('ALL DONE!'));
         })
-        .catch(error => {
-            console.log(chalk.red(error.cause));
+        .catch((error) => {
+            console.log(chalk.red(error.message || error.cause));
         });
 };
