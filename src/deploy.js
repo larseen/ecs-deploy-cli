@@ -47,7 +47,7 @@ module.exports = function deploy(argv) {
                 Task: ${taskDefinition.taskDefinitionArn}
                 Service: ${argv.service}
                 Cluster: ${argv.cluster}`));
-            return ECS.registerTaskDefinitionAsync({
+            return ECS.updateServiceAsync({
                 service: argv.service,
                 cluster: argv.cluster,
                 taskDefinition: taskDefinition.taskDefinitionArn
